@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <link rel="stylesheet" href="farm.css">
+        
+        <title>年賀状</title>
+    </head>
+
+    <div class="scene-container">
+        <div class="sky" id="sky">
+            <img src="walk_right.png" class="horse-god" id="horseGod">
+        </div>
+        <canvas class="sky-canvas" id="skyCanvas"></canvas>
+
+        <div  class="houses" id="houses">
+            <!-- House 1 -->
+            <div class="house-group" id="house1">
+                <div class="house-container" id="house1-container">
+                
+                    <!-- 煙コンポーネント -->
+                    <div class="smoke-emitter"  id="house1_smoke">
+                        <div class="smoke-particle"></div>
+                        <div class="smoke-particle"></div>
+                        <div class="smoke-particle"></div>
+                        <div class="smoke-particle"></div>
+                    </div>
+                    <img src="dark_house.png" id="house1-png" alt="house"> 
+
+                </div>
+                <div class="lightHouse-container" id="house1-lightContainer">
+                    <img src="light_house.png" id="house1-png" alt="house"> 
+                </div>
+            </div>
+
+
+            <!-- House 2 -->
+            <div class="house-group" id="house2">
+                <div class="house-container" id="house2-container">
+                    <div class="smoke-emitter" id="house2_smoke">
+                        <div class="smoke-particle"></div>
+                        <div class="smoke-particle"></div>
+                        <div class="smoke-particle"></div>
+                        <div class="smoke-particle"></div>
+                    </div>
+                    <img src="dark_house.png" id="house2-png" alt="house">
+                </div>
+                <div class="lightHouse-container" id="house2-lightContainer">
+                    <img src="light_house.png" id="house2-png" alt="house"> 
+                </div> 
+            </div>
+
+            <!-- House 3 -->
+            <div class="house-group" id="house3">
+                <div class="house-container" id="house3-container">
+                    <div class="smoke-emitter" id="house3_smoke">
+                        <div class="smoke-particle"></div>
+                        <div class="smoke-particle"></div>
+                        <div class="smoke-particle"></div>
+                        <div class="smoke-particle"></div>
+                    </div>
+                    <img src="dark_house.png" id="house3-png" alt="house">
+                </div>
+                <div class="lightHouse-container" id="house3-lightContainer">
+                    <img src="light_house.png" id="house3-png" alt="house"> 
+                </div> 
+            </div>
+
+            <!-- House 4 -->
+            <div class="house-group" id="house4">
+                <div class="house-container" id="house4-container">
+                    <div class="smoke-emitter" id="house4_smoke">
+                        <div class="smoke-particle"></div>
+                        <div class="smoke-particle"></div>
+                        <div class="smoke-particle"></div>
+                        <div class="smoke-particle"></div>
+                    </div>
+                    <img src="dark_house.png" id="house4-png" alt="house"> 
+                </div>
+                <div class="lightHouse-container" id="house4-lightContainer">
+                    <img src="light_house.png" id="house4-png" alt="house"> 
+                </div>
+            </div>
+
+            <!-- House 5 -->
+            <div class="house-group" id="house5">
+                <div class="house-container" id="house5-container">
+                    <div class="smoke-emitter" id="house5_smoke">
+                        <div class="smoke-particle"></div>
+                        <div class="smoke-particle"></div>
+                        <div class="smoke-particle"></div>
+                        <div class="smoke-particle"></div>
+                    </div>
+                    <img src="dark_house.png" id="house5-png" alt="house">
+                </div>
+                
+                <div class="lightHouse-container" id="house5-lightContainer">
+                    <img src="light_house.png" id="house5-png" alt="house"> 
+                </div> 
+            </div>
+
+        </div>
+
+        <div class="objects">
+            <img src="walk_right.png" class="horse" id="horse1">
+            <img src="walk_right.png" class="horse" id="horse2">
+            <img src="walk_right.png" class="horse" id="horse3">
+            <img src="walk_right.png" class="horse" id="horse4">
+            <img src="walk_right.png" class="horse" id="horse5">
+        </div>
+
+        <div class="meadow", id="meadow">
+
+        </div>
+
+    </div>
+
+    <img src="book_on_table.png" class="book_on_table" id="bookOnTable">
+
+
+
+    <!-- 4. 掲示板オーバーレイ（最前面） -->
+    <div id="village-board" class="board-overlay">
+        <div class="board-content">
+            <span id="board-close" class="close-x">&times;</span>
+            <h3 class="board-title">📜 2026年 ノート</h3>
+            
+            
+            <div class="post-form">
+                <textarea id="msg-input" placeholder="村の出来事を記す..."></textarea>
+                <button id="msg-submit">記録する</button>
+            </div>
+
+            <div id="msg-container" class="msg-container">
+                <div class="msg-item">
+                    <small>(　初期メッセージ　：　和　)</small>
+                    <p>２０２６年　年賀状の世界へようこそ！ <br>今年もよろしくお願いします。皆様が良い一年になりますように。</p>
+                </div>
+            </div>
+            
+            <a href="useFrom.html" class="board-title board-title--middle">利用したサイト等</a>
+            
+        </div>
+    </div>
+</div>
+    <script type="module" src="farm.js"></script>
+<body>      
+    
+</body>
+</html>
+
