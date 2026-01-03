@@ -2277,9 +2277,8 @@ class NewYearCard {
     }
     adjustSceneContainerPosition() {
         const SCENE_CONTAINER = document.getElementById("sceneContainer");
-        SCENE_CONTAINER.style.height = `${window.innerHeight}px`;
     }
 }
-alert("ver5.2 : 23:05");
+alert("ver6 : 23:30");
 const APP = new NewYearCard();
 //# sourceMappingURL=farm.js.map
