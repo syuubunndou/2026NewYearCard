@@ -2290,5 +2290,6 @@ class NewYearCard {
         HOUSES.style.transform = `translateY(${HOUSE_HEIGHT}px)`;
     }
 }
+alert("ver2 : 20:44");
 const APP = new NewYearCard();
 //# sourceMappingURL=farm.js.map
