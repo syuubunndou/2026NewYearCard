@@ -1401,7 +1401,7 @@ class PreLoader {
                                         padding:0;
                                         margin:0;
                                         width:100%;
-                                        height:100vh;
+                                        height:100svh;
 
                                     }
                                     .wrapper{
@@ -1862,8 +1862,8 @@ class Horse {
     }
     changePosition() {
         this.mayChangeDirection();
-        this.addVhw();
-        this.adjustPositionAndDirection4Vhw();
+        this.addsvhw();
+        this.adjustPositionAndDirection4svhw();
         this.adjustZindex(this.getCurrenPosition().currentTop);
     }
     getCurrenPosition() {
@@ -1878,14 +1878,14 @@ class Horse {
         this.HORSE.style.top = (POSITION.currentTop + this.HORSE_ATTRIBUTES.stepDistance * this.HORSE_ATTRIBUTES.yDirection) + "px";
         this.HORSE.style.left = (POSITION.currentLeft + this.HORSE_ATTRIBUTES.stepDistance * this.HORSE_ATTRIBUTES.xDirection) + "px";
     }
-    addVhw() {
+    addsvhw() {
         const POSITION = this.getCurrenPosition();
-        const currentLeftVW = (POSITION.currentLeft / window.innerWidth) * 100;
-        const currentTopVH = (POSITION.currentTop / window.innerHeight) * 100;
-        const nextLeft = currentLeftVW + (this.HORSE_ATTRIBUTES.stepDistance / 10 * this.HORSE_ATTRIBUTES.xDirection);
-        const nextTop = currentTopVH + (this.HORSE_ATTRIBUTES.stepDistance / 10 * this.HORSE_ATTRIBUTES.yDirection);
-        this.HORSE.style.left = nextLeft + "vw";
-        this.HORSE.style.top = nextTop + "vh";
+        const currentLeftsvw = (POSITION.currentLeft / window.innerWidth) * 100;
+        const currentTopsvh = (POSITION.currentTop / window.innerHeight) * 100;
+        const nextLeft = currentLeftsvw + (this.HORSE_ATTRIBUTES.stepDistance / 10 * this.HORSE_ATTRIBUTES.xDirection);
+        const nextTop = currentTopsvh + (this.HORSE_ATTRIBUTES.stepDistance / 10 * this.HORSE_ATTRIBUTES.yDirection);
+        this.HORSE.style.left = nextLeft + "svw";
+        this.HORSE.style.top = nextTop + "svh";
     }
     adjustZindex(topPx) {
         this.HORSE.style.zIndex = `${Math.floor(topPx) + 100}`;
@@ -1921,22 +1921,22 @@ class Horse {
             this.changeDirection("x", 1);
         }
     }
-    adjustPositionAndDirection4Vhw() {
+    adjustPositionAndDirection4svhw() {
         const CURRENT_POSITION = this.getCurrenPosition();
-        if (CURRENT_POSITION.currentTop > window.innerHeight * 0.8) {
-            this.HORSE.style.top = 79 + "vh";
+        if (CURRENT_POSITION.currentTop > window.innerHeight * 0.5) {
+            this.HORSE.style.top = 50 + "svh";
             this.changeDirection("y", -1);
         }
         else if (CURRENT_POSITION.currentTop < 0) {
-            this.HORSE.style.top = 1 + "vh";
+            this.HORSE.style.top = 1 + "svh";
             this.changeDirection("y", 1);
         }
         if (CURRENT_POSITION.currentLeft > window.innerWidth) {
-            this.HORSE.style.left = 99 + "vw";
+            this.HORSE.style.left = 99 + "svw";
             this.changeDirection("x", -1);
         }
         else if (CURRENT_POSITION.currentLeft < 0) {
-            this.HORSE.style.left = 1 + "vw";
+            this.HORSE.style.left = 1 + "svw";
             this.changeDirection("x", 1);
         }
     }
@@ -1979,13 +1979,13 @@ class Horse {
         const SLOPE = (SCALE_MAX - SCALE_MIN) / (TOP_MAX - TOP_MIN);
         return SCALE_MIN + (POSITION.currentTop - TOP_MIN) * SLOPE;
     }
-    vhwcalcScale() {
+    svhwcalcScale() {
         const pos = this.getCurrenPosition();
-        const vh = window.innerHeight / 100;
-        const START_VH = 40;
-        const END_VH = 80;
-        const currentTopVH = pos.currentTop / vh;
-        let ratio = (currentTopVH - START_VH) / (END_VH - START_VH);
+        const svh = window.innerHeight / 100;
+        const START_svh = 40;
+        const END_svh = 80;
+        const currentTopsvh = pos.currentTop / svh;
+        let ratio = (currentTopsvh - START_svh) / (END_svh - START_svh);
         ratio = Math.max(0, Math.min(1, ratio));
         const smoothRatio = Math.sqrt(ratio);
         const SCALE_MIN = 1.0;
