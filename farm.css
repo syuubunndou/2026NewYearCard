@@ -13,8 +13,7 @@ body {
 
 
 .scene-container {
-    width: 100svw;
-    height: 100svh;
+    height: 1px;
     overflow: hidden; /* 要素がはみ出さないように */
     position: relative;
 

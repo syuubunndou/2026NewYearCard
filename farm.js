@@ -2250,6 +2250,7 @@ class NewYearCard {
         };
         this.FIREBASE_APP = new FirebaseFunctions(CONFIG, false);
         this.adjustHousePosition();
+        this.adjustSceneContainerPosition();
         const PRELOADER = new PreLoader();
         const RGB = `rgba(255, 255, 255, 0.9)`;
         PRELOADER.boundBalls("SelfCloseMode", null, 0, {
@@ -2274,7 +2275,11 @@ class NewYearCard {
         const HOUSES = document.getElementById("houses");
         HOUSES.style.transform = `translateY(${HOUSE_HEIGHT}px)`;
     }
+    adjustSceneContainerPosition() {
+        const SCENE_CONTAINER = document.getElementById("sceneContainer");
+        SCENE_CONTAINER.style.height = `${window.innerHeight}px`;
+    }
 }
-alert("ver4.1 : 22:50");
+alert("ver5 : 23:05");
 const APP = new NewYearCard();
 //# sourceMappingURL=farm.js.map
