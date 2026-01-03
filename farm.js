@@ -1417,7 +1417,7 @@ class PreLoader {
                                         height:20px;
                                         position: absolute;
                                         border-radius: 50%;
-                                        background-color: #fff;
+                                        background-color: #e1f3e1ff;
                                         left:15%;
                                         transform-origin: 50%;
                                         animation: circle .5s alternate infinite ease;
@@ -2252,9 +2252,9 @@ class NewYearCard {
         this.adjustHousePosition();
         this.adjustSceneContainerPosition();
         const PRELOADER = new PreLoader();
-        const RGB = `rgba(255, 255, 255, 0.9)`;
+        const RGB = `rgba(24, 24, 24, 0.9)`;
         PRELOADER.boundBalls("SelfCloseMode", null, 0, {
-            DISPLAY_CONTENT: "年賀状 読込中・・・", BACKGROUND_COLOR: RGB, FONT_COLOR: new UtilsFunctions().chooseSuitableFontColor(RGB)
+            DISPLAY_CONTENT: "年賀状 読込中・・・", BACKGROUND_COLOR: RGB, FONT_COLOR: `rgba(230, 252, 210, 1)`
         });
         const HORSE = new Horse(1, this.FIREBASE_APP, null);
         const HORSE2 = new Horse(2, this.FIREBASE_APP, null);
@@ -2278,6 +2278,5 @@ class NewYearCard {
     adjustSceneContainerPosition() {
     }
 }
-alert("ver13 : 0:10");
 const APP = new NewYearCard();
 //# sourceMappingURL=farm.js.map
