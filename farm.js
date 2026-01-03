@@ -1401,7 +1401,7 @@ class PreLoader {
                                         padding:0;
                                         margin:0;
                                         width:100%;
-                                        height:100svh;
+                                        height:100%;
 
                                     }
                                     .wrapper{
@@ -1880,12 +1880,13 @@ class Horse {
     }
     addsvhw() {
         const POSITION = this.getCurrenPosition();
-        const currentLeftsvw = (POSITION.currentLeft / window.innerWidth) * 100;
-        const currentTopsvh = (POSITION.currentTop / window.innerHeight) * 100;
+        const PARENT_MEADOW = document.getElementById("meadow");
+        const currentLeftsvw = (POSITION.currentLeft / PARENT_MEADOW.getBoundingClientRect().width) * 100;
+        const currentTopsvh = (POSITION.currentTop / PARENT_MEADOW.getBoundingClientRect().height) * 100;
         const nextLeft = currentLeftsvw + (this.HORSE_ATTRIBUTES.stepDistance / 10 * this.HORSE_ATTRIBUTES.xDirection);
         const nextTop = currentTopsvh + (this.HORSE_ATTRIBUTES.stepDistance / 10 * this.HORSE_ATTRIBUTES.yDirection);
-        this.HORSE.style.left = nextLeft + "svw";
-        this.HORSE.style.top = nextTop + "svh";
+        this.HORSE.style.left = nextLeft + "%";
+        this.HORSE.style.top = nextTop + "%";
     }
     adjustZindex(topPx) {
         this.HORSE.style.zIndex = `${Math.floor(topPx) + 100}`;
@@ -1924,19 +1925,19 @@ class Horse {
     adjustPositionAndDirection4svhw() {
         const CURRENT_POSITION = this.getCurrenPosition();
         if (CURRENT_POSITION.currentTop > window.innerHeight * 0.5) {
-            this.HORSE.style.top = 50 + "svh";
+            this.HORSE.style.top = 49 + "%";
             this.changeDirection("y", -1);
         }
         else if (CURRENT_POSITION.currentTop < 0) {
-            this.HORSE.style.top = 1 + "svh";
+            this.HORSE.style.top = 1 + "%";
             this.changeDirection("y", 1);
         }
         if (CURRENT_POSITION.currentLeft > window.innerWidth) {
-            this.HORSE.style.left = 99 + "svw";
+            this.HORSE.style.left = 99 + "%";
             this.changeDirection("x", -1);
         }
         else if (CURRENT_POSITION.currentLeft < 0) {
-            this.HORSE.style.left = 1 + "svw";
+            this.HORSE.style.left = 1 + "%";
             this.changeDirection("x", 1);
         }
     }
@@ -1981,7 +1982,8 @@ class Horse {
     }
     svhwcalcScale() {
         const pos = this.getCurrenPosition();
-        const svh = window.innerHeight / 100;
+        const PARENT_MEADOW = document.getElementById("meadow");
+        const svh = PARENT_MEADOW.getBoundingClientRect().height / 100;
         const START_svh = 40;
         const END_svh = 80;
         const currentTopsvh = pos.currentTop / svh;
@@ -2290,6 +2292,6 @@ class NewYearCard {
         HOUSES.style.transform = `translateY(${HOUSE_HEIGHT}px)`;
     }
 }
-alert("ver2 : 20:44");
+alert("ver3 : 21:35");
 const APP = new NewYearCard();
 //# sourceMappingURL=farm.js.map
