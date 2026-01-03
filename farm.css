@@ -10,6 +10,10 @@
     margin: auto; 
     overflow-y: hidden;    
 } */
+.html,body{
+  overflow-y: hidden;
+  overflow-x: hidden; 
+} 
 
 
 .scene-container {
