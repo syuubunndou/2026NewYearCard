@@ -2280,6 +2280,6 @@ class NewYearCard {
         SCENE_CONTAINER.style.height = `${window.innerHeight}px`;
     }
 }
-alert("ver5.1 : 23:05");
+alert("ver5.2 : 23:05");
 const APP = new NewYearCard();
 //# sourceMappingURL=farm.js.map
