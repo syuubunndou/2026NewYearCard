@@ -2254,7 +2254,7 @@ class NewYearCard {
         const PRELOADER = new PreLoader();
         const RGB = `rgba(255, 255, 255, 0.9)`;
         PRELOADER.boundBalls("SelfCloseMode", null, 0, {
-            DISPLAY_CONTENT: "年賀状を読み込んでいます・・・", BACKGROUND_COLOR: RGB, FONT_COLOR: new UtilsFunctions().chooseSuitableFontColor(RGB)
+            DISPLAY_CONTENT: "年賀状 読込中・・・", BACKGROUND_COLOR: RGB, FONT_COLOR: new UtilsFunctions().chooseSuitableFontColor(RGB)
         });
         const HORSE = new Horse(1, this.FIREBASE_APP, null);
         const HORSE2 = new Horse(2, this.FIREBASE_APP, null);
@@ -2277,9 +2277,10 @@ class NewYearCard {
     }
     adjustSceneContainerPosition() {
         const SCENE_CONTAINER = document.getElementById("sceneContainer");
-        SCENE_CONTAINER.style.height = `${window.innerHeight + 20}px`;
+        SCENE_CONTAINER.style.height = `${100}%`;
+        SCENE_CONTAINER.style.width = `${100}%`;
     }
 }
-alert("ver10 : 23:50");
+alert("ver11 : 23:55");
 const APP = new NewYearCard();
 //# sourceMappingURL=farm.js.map
