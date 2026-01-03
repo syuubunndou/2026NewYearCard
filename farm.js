@@ -1490,7 +1490,7 @@ class PreLoader {
                                         top         : 150px;
                                         left        : ${LEFT_PX};
                                         color       : ${FONT_COLOR};
-                                        font-size   : 45px;
+                                        font-size   : 35px;
                                     }
 
 
@@ -2275,6 +2275,6 @@ class NewYearCard {
         HOUSES.style.transform = `translateY(${HOUSE_HEIGHT}px)`;
     }
 }
-alert("ver4 : 22:50");
+alert("ver4.1 : 22:50");
 const APP = new NewYearCard();
 //# sourceMappingURL=farm.js.map
