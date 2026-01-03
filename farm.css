@@ -11,16 +11,19 @@
     overflow-y: hidden;    
 } */
 .html,body{
-  overflow-y: hidden;
-  overflow-x: hidden; 
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
 } 
+body{
+    overflow: hidden;
+}
 
 
 .scene-container {
-    height: 100%;
-    overflow: hidden; /* 要素がはみ出さないように */
-    position: relative;
-    bottom: 0px;
+    position: fixed;
+    inset: 0;
+    background: #000;
 
   
 }

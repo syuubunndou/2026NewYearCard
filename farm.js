@@ -2276,11 +2276,8 @@ class NewYearCard {
         HOUSES.style.transform = `translateY(${HOUSE_HEIGHT}px)`;
     }
     adjustSceneContainerPosition() {
-        const SCENE_CONTAINER = document.getElementById("sceneContainer");
-        SCENE_CONTAINER.style.height = `${window.innerHeight + 100}px`;
-        SCENE_CONTAINER.style.width = `${window.innerWidth + 100}px`;
     }
 }
-alert("ver12 : 23:59");
+alert("ver13 : 0:10");
 const APP = new NewYearCard();
 //# sourceMappingURL=farm.js.map
