@@ -3,17 +3,17 @@
 /* ================================================= */
 
 /* 全体のリセット */
-html,body {
+/* html,body {
   
     width: 100%;
     height: 100%;
     margin: auto; 
     overflow-y: hidden;    
-}
+} */
 
 
 .scene-container {
-    height: 1000px;
+    height: 100%;
     overflow: hidden; /* 要素がはみ出さないように */
     position: relative;
     bottom: 0px;

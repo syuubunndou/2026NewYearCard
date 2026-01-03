@@ -2279,6 +2279,6 @@ class NewYearCard {
         const SCENE_CONTAINER = document.getElementById("sceneContainer");
     }
 }
-alert("ver7 : 23:35");
+alert("ver8 : 23:40");
 const APP = new NewYearCard();
 //# sourceMappingURL=farm.js.map
