@@ -1843,7 +1843,9 @@ class Horse {
             }
             this.HORSE = this.makeHorseElement(DATA.id);
             this.HORSE_ATTRIBUTES = DATA.horseAttribute;
+            this.CRITERIA_STEP_AMOUNT = this.HORSE_ATTRIBUTES.stepDistance;
             this.initHorsePosition();
+            console.log(this.HORSE_ATTRIBUTES);
             setInterval(() => {
                 this.walkLauncher();
             }, (200));
@@ -1862,8 +1864,8 @@ class Horse {
     }
     changePosition() {
         this.mayChangeDirection();
-        this.addsvhw();
-        this.adjustPositionAndDirection4svhw();
+        this.addPx();
+        this.adjustPositionAndDirection();
         this.adjustZindex(this.getCurrenPosition().currentTop);
     }
     getCurrenPosition() {
@@ -1878,18 +1880,27 @@ class Horse {
         this.HORSE.style.top = (POSITION.currentTop + this.HORSE_ATTRIBUTES.stepDistance * this.HORSE_ATTRIBUTES.yDirection) + "px";
         this.HORSE.style.left = (POSITION.currentLeft + this.HORSE_ATTRIBUTES.stepDistance * this.HORSE_ATTRIBUTES.xDirection) + "px";
     }
-    addsvhw() {
-        const POSITION = this.getCurrenPosition();
+    adjustPositionAndDirection() {
+        const CURRENT_POSITION = this.getCurrenPosition();
         const PARENT_MEADOW = document.getElementById("meadow");
-        const currentLeftsvw = (POSITION.currentLeft / PARENT_MEADOW.getBoundingClientRect().width) * 100;
-        const currentTopsvh = (POSITION.currentTop / PARENT_MEADOW.getBoundingClientRect().height) * 100;
-        const nextLeft = currentLeftsvw + (this.HORSE_ATTRIBUTES.stepDistance / 10 * this.HORSE_ATTRIBUTES.xDirection);
-        const nextTop = currentTopsvh + (this.HORSE_ATTRIBUTES.stepDistance / 10 * this.HORSE_ATTRIBUTES.yDirection);
-        this.HORSE.style.left = nextLeft + "%";
-        this.HORSE.style.top = nextTop + "%";
-    }
-    adjustZindex(topPx) {
-        this.HORSE.style.zIndex = `${Math.floor(topPx) + 100}`;
+        const MEADOW_HEIGHT = PARENT_MEADOW.getBoundingClientRect().height;
+        const MEADOW_WIDTH = PARENT_MEADOW.getBoundingClientRect().width;
+        if (CURRENT_POSITION.currentTop > MEADOW_HEIGHT) {
+            this.HORSE.style.top = (MEADOW_HEIGHT - 10) + "px";
+            this.changeDirection("y", -1);
+        }
+        else if (CURRENT_POSITION.currentTop < -10) {
+            this.HORSE.style.top = 0 + "px";
+            this.changeDirection("y", 1);
+        }
+        if (CURRENT_POSITION.currentLeft > MEADOW_WIDTH) {
+            this.HORSE.style.left = (MEADOW_WIDTH - 10) + "px";
+            this.changeDirection("x", -1);
+        }
+        else if (CURRENT_POSITION.currentLeft < -10) {
+            this.HORSE.style.left = 0 + "px";
+            this.changeDirection("x", 1);
+        }
     }
     mayChangeDirection() {
         if (Math.random() < 1 / 250) {
@@ -1901,44 +1912,6 @@ class Horse {
                 this.changeDirection("x", 1);
                 this.changeDirection("y", 1);
             }
-        }
-    }
-    adjustPositionAndDirection() {
-        const CURRENT_POSITION = this.getCurrenPosition();
-        if (CURRENT_POSITION.currentTop > 500) {
-            this.HORSE.style.top = 490 + "px";
-            this.changeDirection("y", -1);
-        }
-        else if (CURRENT_POSITION.currentTop < -60) {
-            this.HORSE.style.top = -50 + "px";
-            this.changeDirection("y", 1);
-        }
-        if (CURRENT_POSITION.currentLeft > 1020) {
-            this.HORSE.style.left = 1010 + "px";
-            this.changeDirection("x", -1);
-        }
-        else if (CURRENT_POSITION.currentLeft < -250) {
-            this.HORSE.style.left = -240 + "px";
-            this.changeDirection("x", 1);
-        }
-    }
-    adjustPositionAndDirection4svhw() {
-        const CURRENT_POSITION = this.getCurrenPosition();
-        if (CURRENT_POSITION.currentTop > window.innerHeight * 0.5) {
-            this.HORSE.style.top = 49 + "%";
-            this.changeDirection("y", -1);
-        }
-        else if (CURRENT_POSITION.currentTop < 0) {
-            this.HORSE.style.top = 1 + "%";
-            this.changeDirection("y", 1);
-        }
-        if (CURRENT_POSITION.currentLeft > window.innerWidth) {
-            this.HORSE.style.left = 99 + "%";
-            this.changeDirection("x", -1);
-        }
-        else if (CURRENT_POSITION.currentLeft < 0) {
-            this.HORSE.style.left = 1 + "%";
-            this.changeDirection("x", 1);
         }
     }
     changeDirection(xy, index) {
@@ -1973,32 +1946,42 @@ class Horse {
     }
     calcScale() {
         const POSITION = this.getCurrenPosition();
-        const TOP_MIN = -60;
-        const TOP_MAX = 500;
+        const PARENT_MEADOW = document.getElementById("meadow");
+        const MEADOW_HEIGHT = PARENT_MEADOW.getBoundingClientRect().height;
+        const MEADOW_WIDTH = PARENT_MEADOW.getBoundingClientRect().width;
+        const TOP_MIN = -10;
+        const TOP_MAX = MEADOW_HEIGHT;
         const SCALE_MIN = 1.0;
         const SCALE_MAX = 4.0;
         const SLOPE = (SCALE_MAX - SCALE_MIN) / (TOP_MAX - TOP_MIN);
         return SCALE_MIN + (POSITION.currentTop - TOP_MIN) * SLOPE;
     }
-    svhwcalcScale() {
-        const pos = this.getCurrenPosition();
-        const PARENT_MEADOW = document.getElementById("meadow");
-        const svh = PARENT_MEADOW.getBoundingClientRect().height / 100;
-        const START_svh = 40;
-        const END_svh = 80;
-        const currentTopsvh = pos.currentTop / svh;
-        let ratio = (currentTopsvh - START_svh) / (END_svh - START_svh);
-        ratio = Math.max(0, Math.min(1, ratio));
-        const smoothRatio = Math.sqrt(ratio);
-        const SCALE_MIN = 1.0;
-        const SCALE_MAX = 4.0;
-        return SCALE_MIN + (SCALE_MAX - SCALE_MIN) * smoothRatio;
+    adjustZindex(topPx) {
+        this.HORSE.style.zIndex = `${Math.floor(topPx) + 100}`;
+    }
+    rest() {
+        this.HORSE.src = this.provideRestImage();
+    }
+    provideRestImage() {
+        switch (this.HORSE.src.split("/").pop()) {
+            case "walk_right.png":
+                return "walk_middle1.png";
+            case "walk_middle1.png":
+                return "walk_middle1.png";
+            case "walk_left.png":
+                return "walk_middle2.png";
+            case "walk_middle2.png":
+                return "walk_middle2.png";
+            default:
+                return "";
+        }
     }
     walkLauncher() {
         if (this.decideWalkByChance()) {
             this.walk(this.returnNextImageSrc());
         }
         else {
+            this.rest();
         }
     }
     saveCurrentHorseStatusToFirebase() {
@@ -2292,6 +2275,6 @@ class NewYearCard {
         HOUSES.style.transform = `translateY(${HOUSE_HEIGHT}px)`;
     }
 }
-alert("ver3 : 21:35");
+alert("ver4 : 22:50");
 const APP = new NewYearCard();
 //# sourceMappingURL=farm.js.map

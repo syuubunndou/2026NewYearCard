@@ -4,9 +4,13 @@
 
 /* 全体のリセット */
 body {
-    margin: 0;
-    padding: 0;
+  
+    width: 100%;
+    height: 100%;
+    margin: auto; 
+    overflow-y: hidden;    
 }
+
 
 .scene-container {
     width: 100svw;
@@ -24,7 +28,7 @@ body {
 .sky {
     position: relative;
     width: 100%;
-    height: 60svh; 
+    height: 60%; 
     top: 0;
     /* 1. ベースのグラデーション: 昼 (一番下層) */
     background: linear-gradient(to top, #80DEEA, #E0FFFF);
@@ -68,7 +72,7 @@ body {
 .meadow {
     position: absolute;
     width: 100%;
-    height: 40svh; 
+    height: 40%; 
     bottom: 1px;
     /* 昼の最も明るい色からスタート */
     background-color: #6EB44A;
@@ -177,22 +181,22 @@ body {
         position: absolute;
         bottom: 40%;
 
-        width: 12svw;
-        z-index: 100;
+        width: 12%;
+        z-index: 10;
     }
     
     .house-group {
         position: absolute; /* 親の .houses を基準にする */
         bottom: 0;          /* 底辺を揃える */
-        width: 12svw;        /* サイズは今の設定を維持 */
+        width: 100%;        /* サイズは今の設定を維持 */
     }
 
     /* 個別位置の設定 */
-#house1 { left: 0svw; }
-#house2 { left: 17svw; }
-#house3 { left: 45svw; }
-#house4 { left: 65svw; }
-#house5 { left: 85svw; }
+#house1 { left: 0%; }
+#house2 { left: 170%; }
+#house3 { left: 345%; }
+#house4 { left: 465%; }
+#house5 { left: 585%; }
 
     .house-container,
     .lightHouse-container{
@@ -346,9 +350,9 @@ body {
 /* ================================================= */
 .book_on_table{
     position : absolute;
-    bottom   : 38svh;
-    left    : 40svw;
-    width    : 5svw;
+    bottom   : 38%;
+    left    : 35%;
+    width    : 5%;
     height   : auto;
     z-index  : 1;
     pointer-events: auto;
